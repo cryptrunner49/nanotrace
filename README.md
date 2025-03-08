@@ -35,21 +35,19 @@ package main
 import (
     "fmt"
     "time"
-    "github.com/cryptrunner49/nanotrace"
+    "github.com/cryptrunner49/nanotrace/tracer"
 )
 
 func main() {
  fmt.Println("Starting NanoTrace...")
 
- // Start execution tracing
- tracer := tracer.NewTracer()
+ // Start execution tracing with stdout as the output destination
+ tracer := tracer.NewTracer(os.Stdout)
  tracer.Start()
  defer tracer.Stop()
 
  // Simulate workload
  simulateWorkload()
-
- fmt.Println("Profiling and tracing completed.")
 }
 
 func someFunction() int {
