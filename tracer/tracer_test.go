@@ -1,9 +1,6 @@
 package tracer
 
 import (
-	"bytes"
-	"io"
-	"os"
 	"strings"
 	"testing"
 	"time"
@@ -11,34 +8,13 @@ import (
 
 func TestTracer(t *testing.T) {
 	t.Run("NormalFlow", func(t *testing.T) {
-		var buf bytes.Buffer
+		var buf strings.Builder // Use strings.Builder for efficiency
 		tracer := NewTracer(&buf)
-
-		// Redirect stdout and capture output
-		originalStdout := os.Stdout
-		r, w, err := os.Pipe()
-		if err != nil {
-			t.Fatalf("Failed to create pipe: %v", err)
-		}
-		os.Stdout = w
-
-		// Start a goroutine to capture output, synchronized with a channel
-		done := make(chan struct{})
-		go func() {
-			io.Copy(&buf, r)
-			r.Close()
-			close(done)
-		}()
 
 		// Run the tracer
 		tracer.Start()
 		time.Sleep(100 * time.Millisecond) // Simulate work
 		tracer.Stop()
-
-		// Restore stdout and wait for output capture
-		w.Close()
-		os.Stdout = originalStdout
-		<-done
 
 		// Verify output
 		lines := strings.Split(strings.TrimSpace(buf.String()), "\n")
@@ -64,7 +40,7 @@ func TestTracer(t *testing.T) {
 	})
 
 	t.Run("StopBeforeStart", func(t *testing.T) {
-		var buf bytes.Buffer
+		var buf strings.Builder
 		tracer := NewTracer(&buf)
 		tracer.Stop() // Should do nothing
 		if buf.Len() != 0 {
@@ -73,7 +49,7 @@ func TestTracer(t *testing.T) {
 	})
 
 	t.Run("MultipleStartCalls", func(t *testing.T) {
-		var buf bytes.Buffer
+		var buf strings.Builder
 		tracer := NewTracer(&buf)
 
 		tracer.Start()
