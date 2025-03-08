@@ -15,7 +15,7 @@ NanoTrace provides an easy-to-use toolkit to profile and trace your Golang appli
 - **Minimal Overhead**: Lightweight and efficient with near-zero impact on performance.
 - **Simple API**: Easy-to-use functions to start and stop profiling.
 - **Real-time Insights**: View execution times directly in the console.
-- **Customizable**: You can customize the output writer to suit your needs. If the out parameter is nil, no output will be generated.
+- **Fully Customizable**: Tailor the output writer to your needs. If out is nil, no output is generated.
 
 ## Usage 💻
 
