@@ -52,6 +52,6 @@ func simulateWorkload() {
 
 We welcome contributions! Check out our [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
-## License 📄
+## License 📜
 
-This project is licensed under the MIT License.
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
