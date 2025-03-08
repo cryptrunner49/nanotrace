@@ -39,17 +39,17 @@ import (
 )
 
 func main() {
-    // Start profiling
-    profiler := nanotrace.NewProfiler()
-    profiler.Start()
-    
-    // Simulated workload
-    result := someFunction()
-    fmt.Println("Result:", result)
-    
-    // Stop profiling and display report
-    profiler.Stop()
-    profiler.Report()
+ fmt.Println("Starting NanoTrace...")
+
+ // Start execution tracing
+ tracer := tracer.NewTracer()
+ tracer.Start()
+ defer tracer.Stop()
+
+ // Simulate workload
+ simulateWorkload()
+
+ fmt.Println("Profiling and tracing completed.")
 }
 
 func someFunction() int {
