@@ -15,15 +15,6 @@ NanoTrace provides an easy-to-use toolkit to profile and trace your Golang appli
 - **Minimal Overhead**: Lightweight and efficient with near-zero impact on performance.
 - **Simple API**: Easy-to-use functions to start and stop profiling.
 - **Real-time Insights**: View execution times directly in the console.
-- **Customizable**: Flexible settings for different tracing levels.
-
-## Installation 📥
-
-Ensure you have Go installed, then install NanoTrace using:
-
-```bash
-go get github.com/cryptrunner49/nanotrace
-```
 
 ## Usage 💻
 
@@ -50,11 +41,9 @@ func main() {
  simulateWorkload()
 }
 
-func someFunction() int {
-    start := time.Now()
-    defer nanotrace.Track("someFunction", start)
-    time.Sleep(100 * time.Millisecond) // Simulating work
-    return 42
+func simulateWorkload() {
+ fmt.Println("Simulating workload...")
+ time.Sleep(200 * time.Millisecond) // Simulated function execution time
 }
 ```
 
