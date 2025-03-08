@@ -5,16 +5,10 @@ import (
 	"time"
 
 	"github.com/cryptrunner49/nanotrace/internal/tracer"
-	"github.com/cryptrunner49/nanotrace/pkg/nanotrace"
 )
 
 func main() {
 	fmt.Println("Starting NanoTrace...")
-
-	// Start profiling
-	profiler := nanotrace.NewProfiler()
-	profiler.Start()
-	defer profiler.Stop()
 
 	// Start execution tracing
 	tracer := tracer.NewTracer()
