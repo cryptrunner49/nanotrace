@@ -1,33 +1,28 @@
 package nanotrace
 
 import (
-    "os"
-    "runtime/pprof"
+	"fmt"
+	"time"
 )
 
+// Profiler struct holds the start time
 type Profiler struct {
-    cpuProfileFile *os.File
+	startTime time.Time
 }
 
-// NewProfiler creates a new Profiler instance.
+// NewProfiler initializes a new Profiler
 func NewProfiler() *Profiler {
-    return &Profiler{}
+	return &Profiler{}
 }
 
-// Start begins CPU profiling and writes to 'cpu_profile.prof'.
-func (p *Profiler) Start() error {
-    var err error
-    p.cpuProfileFile, err = os.Create("cpu_profile.prof")
-    if err != nil {
-        return err
-    }
-    return pprof.StartCPUProfile(p.cpuProfileFile)
+// Start begins CPU profiling
+func (p *Profiler) Start() {
+	p.startTime = time.Now()
+	fmt.Println("CPU profiling started...")
 }
 
-// Stop ends the CPU profiling session.
+// Stop stops profiling and prints elapsed time
 func (p *Profiler) Stop() {
-    pprof.StopCPUProfile()
-    if p.cpuProfileFile != nil {
-        p.cpuProfileFile.Close()
-    }
+	elapsed := time.Since(p.startTime)
+	fmt.Printf("CPU profiling completed. Total execution time: %v\n", elapsed)
 }

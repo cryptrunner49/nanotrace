@@ -1,26 +1,28 @@
 package tracer
 
 import (
-    "os"
-    "runtime/trace"
+	"fmt"
+	"time"
 )
 
-var traceFile *os.File
-
-// Start initializes tracing and writes to the specified file.
-func Start(filename string) error {
-    var err error
-    traceFile, err = os.Create(filename)
-    if err != nil {
-        return err
-    }
-    return trace.Start(traceFile)
+// Tracer struct holds the start time
+type Tracer struct {
+	startTime time.Time
 }
 
-// Stop ends the tracing session.
-func Stop() {
-    trace.Stop()
-    if traceFile != nil {
-        traceFile.Close()
-    }
+// NewTracer initializes a new Tracer
+func NewTracer() *Tracer {
+	return &Tracer{}
+}
+
+// Start begins execution tracing
+func (t *Tracer) Start() {
+	t.startTime = time.Now()
+	fmt.Println("Tracing started...")
+}
+
+// Stop stops tracing and prints execution time
+func (t *Tracer) Stop() {
+	elapsed := time.Since(t.startTime)
+	fmt.Printf("Tracing completed. Execution time: %v\n", elapsed)
 }

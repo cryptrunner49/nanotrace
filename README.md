@@ -6,20 +6,20 @@ A lightweight performance profiler and tracer for Golang to analyze function exe
 
 NanoTrace provides an easy-to-use toolkit to profile and trace your Golang applications. It helps you:
 
-- **Analyze Function Execution Times** ⏱️
-- **Detect Bottlenecks** 🔍
-- **Improve Performance** 📈
+- **Measure Function Execution Times** ⏱️
+- **Identify Performance Bottlenecks** 🔍
+- **Optimize Application Speed** 🚀
 
 ## Features ✨
 
-- **Lightweight & Fast**: Minimal overhead for performance-critical applications.
-- **Easy Integration**: Simple API to start profiling and tracing.
-- **Real-time Analysis**: Get immediate insights into your app’s performance.
-- **Customizable**: Configure tracing levels and output formats.
+- **Minimal Overhead**: Lightweight and efficient with near-zero impact on performance.
+- **Simple API**: Easy-to-use functions to start and stop profiling.
+- **Real-time Insights**: View execution times directly in the console.
+- **Customizable**: Flexible settings for different tracing levels.
 
 ## Installation 📥
 
-Make sure you have Go installed. Then, install the package using:
+Ensure you have Go installed, then install NanoTrace using:
 
 ```bash
 go get github.com/cryptrunner49/nanotrace
@@ -27,32 +27,36 @@ go get github.com/cryptrunner49/nanotrace
 
 ## Usage 💻
 
-Below is a quick example to get started:
+Here’s a quick example to get started:
 
 ```go
 package main
 
 import (
- "fmt"
- "github.com/cryptrunner49/nanotrace"
+    "fmt"
+    "time"
+    "github.com/cryptrunner49/nanotrace"
 )
 
 func main() {
- // Start the profiler
- nanotrace.Start()
- 
- // Your application code here
- result := someFunction()
- fmt.Println("Result:", result)
- 
- // Stop the profiler and print report
- nanotrace.Stop()
- nanotrace.Report()
+    // Start profiling
+    profiler := nanotrace.NewProfiler()
+    profiler.Start()
+    
+    // Simulated workload
+    result := someFunction()
+    fmt.Println("Result:", result)
+    
+    // Stop profiling and display report
+    profiler.Stop()
+    profiler.Report()
 }
 
 func someFunction() int {
- // Simulate work
- return 42
+    start := time.Now()
+    defer nanotrace.Track("someFunction", start)
+    time.Sleep(100 * time.Millisecond) // Simulating work
+    return 42
 }
 ```
 
@@ -62,4 +66,4 @@ We welcome contributions! Check out our [CONTRIBUTING.md](./CONTRIBUTING.md) for
 
 ## License 📄
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License.

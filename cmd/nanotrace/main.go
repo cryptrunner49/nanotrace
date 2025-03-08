@@ -1,35 +1,33 @@
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 
-    "github.com/cryptrunner49/nanotrace/internal/tracer"
-    "github.com/cryptrunner49/nanotrace/pkg/nanotrace"
+	"github.com/cryptrunner49/nanotrace/internal/tracer"
+	"github.com/cryptrunner49/nanotrace/pkg/nanotrace"
 )
 
 func main() {
-    // Start tracing
-    traceFile := "trace.out"
-    if err := tracer.Start(traceFile); err != nil {
-        fmt.Printf("Failed to start tracer: %v\n", err)
-        return
-    }
-    defer tracer.Stop()
+	fmt.Println("Starting NanoTrace...")
 
-    // Start profiling
-    profiler := nanotrace.NewProfiler()
-    profiler.Start()
-    defer profiler.Stop()
+	// Start profiling
+	profiler := nanotrace.NewProfiler()
+	profiler.Start()
+	defer profiler.Stop()
 
-    // Simulate application workload
-    simulateWorkload()
+	// Start execution tracing
+	tracer := tracer.NewTracer()
+	tracer.Start()
+	defer tracer.Stop()
 
-    fmt.Println("Profiling and tracing completed. Analyze 'cpu_profile.prof' and 'trace.out' for results.")
+	// Simulate workload
+	simulateWorkload()
+
+	fmt.Println("Profiling and tracing completed.")
 }
 
 func simulateWorkload() {
-    for i := 0; i < 5; i++ {
-        time.Sleep(100 * time.Millisecond)
-    }
+	fmt.Println("Simulating workload...")
+	time.Sleep(200 * time.Millisecond) // Simulated function execution time
 }
