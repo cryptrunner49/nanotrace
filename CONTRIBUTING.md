@@ -1,6 +1,6 @@
-# Contributing to GoTrace 🤝
+# Contributing to NanoTrace 🤝
 
-Thank you for your interest in contributing to **GoTrace**! Your help is greatly appreciated. Please follow these guidelines to ensure a smooth collaboration:
+Thank you for your interest in contributing to **NanoTrace**! Your help is greatly appreciated. Please follow these guidelines to ensure a smooth collaboration:
 
 ## How to Contribute 🛠️
 

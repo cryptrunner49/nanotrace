@@ -1,10 +1,10 @@
-# GoTrace 🚀
+# NanoTrace 🚀
 
 A lightweight performance profiler and tracer for Golang to analyze function execution times efficiently. ⚡
 
 ## Overview 📊
 
-GoTrace provides an easy-to-use toolkit to profile and trace your Golang applications. It helps you:
+NanoTrace provides an easy-to-use toolkit to profile and trace your Golang applications. It helps you:
 
 - **Analyze Function Execution Times** ⏱️
 - **Detect Bottlenecks** 🔍
@@ -22,7 +22,7 @@ GoTrace provides an easy-to-use toolkit to profile and trace your Golang applica
 Make sure you have Go installed. Then, install the package using:
 
 ```bash
-go get github.com/cryptrunner49/gotrace
+go get github.com/cryptrunner49/nanotrace
 ```
 
 ## Usage 💻
@@ -34,20 +34,20 @@ package main
 
 import (
  "fmt"
- "github.com/cryptrunner49/gotrace"
+ "github.com/cryptrunner49/nanotrace"
 )
 
 func main() {
  // Start the profiler
- gotrace.Start()
+ nanotrace.Start()
  
  // Your application code here
  result := someFunction()
  fmt.Println("Result:", result)
  
  // Stop the profiler and print report
- gotrace.Stop()
- gotrace.Report()
+ nanotrace.Stop()
+ nanotrace.Report()
 }
 
 func someFunction() int {
