@@ -3,7 +3,7 @@
 # Variables
 BINARY_NAME := nanotrace
 BIN_DIR := bin
-SRC_DIR := ./cmd/nanotrace
+SRC_DIR := ./cmd
 
 # Create bin directory if not exists
 $(BIN_DIR):
