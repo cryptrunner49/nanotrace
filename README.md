@@ -22,7 +22,7 @@ NanoTrace provides an easy-to-use toolkit to profile and trace your Golang appli
 1. **Install via Go Modules:**
 
    ```bash
-   go get github.com/cryptrunner49/stonekv
+   go get github.com/cryptrunner49/nanotrace
    ```  
 
 2. **Basic Usage Example:**
