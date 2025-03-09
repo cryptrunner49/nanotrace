@@ -17,9 +17,15 @@ NanoTrace provides an easy-to-use toolkit to profile and trace your Golang appli
 - **Real-time Insights**: View execution times directly in the console.
 - **Fully Customizable**: Tailor the output writer to your needs. If out is nil, no output is generated.
 
-## Usage 💻
+## Quick Start 🚀
 
-Here’s a quick example to get started:
+1. **Install via Go Modules:**
+
+   ```bash
+   go get github.com/cryptrunner49/stonekv
+   ```  
+
+2. **Basic Usage Example:**
 
 ```go
 package main
