@@ -1,4 +1,4 @@
-# NanoTrace 🚀
+# ⚡ NanoTrace 🚀
 
 A lightweight performance profiler and tracer for Golang to analyze function execution times efficiently. ⚡
 
